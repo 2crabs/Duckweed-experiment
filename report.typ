@@ -35,11 +35,14 @@ $ y = sin x + b $
 
 #v(1em)
 
+#let (trig, time, voltage) = lq.load-txt(read("data/test_data.csv"))
+
 #lq.diagram(
-  title: [Graph],
-  xlabel: [$x$],
-  ylabel: [$y = f (x)$],
-  lq.plot((0, 1, 2, 3, 4), (3, 5, 4, 2, 3))
+  title: [Data test],
+  xlabel: [time (s)],
+  ylabel: [voltage (v)],
+  ylim: (0,4),
+  lq.plot(time, voltage, mark: none, color: red)
 )
 
 #lorem(240)
