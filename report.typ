@@ -26,6 +26,11 @@
 #show heading.where(level: 1): smallcaps
 #show heading.where(level: 1): set align(center)
 
+#show image: set align(center)
+
+
+
+//END OF SETUP
 
 = Introduction
 
@@ -39,12 +44,46 @@
 =  Methodology
 
 == Materials
-#lorem(80)
-#v(0.5em)
-- Item 1
-- Item 2
-- Item 3
-- Item 4
+
+=== Overview
+Materials used included
+- Olympus E-M5 Mark II Mirrorless Camera
+- 12-50mm Lens
+- Tripod
+- Photo background
+- Seachem Flourish Plant Supplement
+- Spirodela Polyrhiza (Giant Duckweed)
+- LED
+- STM32 Devboard
+- Black Foamcore
+
+=== Mirrorless Camera
+Lighting was consistent across photos taken and all photos were taken using the following settings:
+
+- F
+- ISO
+- WB
+- 1/20
+- 16 MP Resolution
+
+=== LED
+The LED chosen had the following spectrum
+#figure(
+  image("imgs/spectrum.png", width: 200pt),
+  caption: [Color spectrum of light source]
+)
+
+The PCB used for controlling the LED was designed around the following schematic
+
+#figure(
+  image("imgs/schematic.png", width: 150pt),
+  caption: [Schematic of LED Driver]
+)
+
+Using a logic MSO oscilloscope to measure the voltage across the current limiting resistor yielded the following curve for turn on speed
+
+=== Plant supplement
+
 
 == Set up
 #lorem(350)
