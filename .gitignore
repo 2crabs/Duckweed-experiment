@@ -4,3 +4,7 @@ LED-Board/LED-Board-backups/
 LED-Board/duckweed-light.bak
 
 .idea/
+
+LED-Board/production/
+
+LED-Board/fabrication-toolkit-options.json

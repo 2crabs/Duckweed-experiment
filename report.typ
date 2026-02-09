@@ -7,7 +7,7 @@
 #show title: set align(center + horizon)
 #show title: set pad(y: 16pt)
 
-#title()[#strike([Effects of Pulsed Lighting on Growth Rate of Spirodela Polyrhiza]) Very Rough Draft]
+#title()[Effects of Pulsed Lighting on Growth Rate of Spirodela Polyrhiza]
 #v(1.5em)
 //#align(center)[M. Fraser]
 #show: word-count
