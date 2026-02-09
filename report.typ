@@ -14,9 +14,27 @@
 #pagebreak()
 //END TITLE PAGE
 
-#outline(depth: 2)
+
+//OUTLINE
+
+//taken from Mc-Zen
+#let appendix(body) = {
+  set heading(numbering: "A", supplement: [Appendix])
+  counter(heading).update(0)
+  body
+}
+#set heading(supplement: [Main])
+
+#show outline.entry: set text(font: "TeX Gyre Adventor", weight: "medium")
+#show outline: set text(font: "TeX Gyre Adventor", weight: "medium")
+
+
+#outline(depth: 2, target: heading.where(supplement: [Main]))
+#outline(target: heading.where(supplement: [Appendix]), title: [Appendix])
 //#outline(target: figure.where(kind: image), title: [Figures])
 //#outline(target: figure.where(kind: table), title: [Tables])
+
+// END OOUTLINE
 
 //PAGE
 #set page(
@@ -26,32 +44,35 @@
 
 
 //HEADINGS
-#show heading.where(level: 1): smallcaps
-#show heading.where(level: 1): set align(center)
+//#show heading.where(level: 1): set align(center)
+#show heading.where(level: 1): set text(font: "TeX Gyre Adventor", weight: "bold")
+#show heading.where(level: 2): set text(font: "TeX Gyre Adventor", weight: "medium")
+#show heading.where(level: 3): set text(font: "TeX Gyre Adventor", weight: "thin")
 
-#show heading.where(level: 1): set heading(numbering: "1.")
-#show heading.where(level: 2): set heading(numbering: "1.")
+#set heading(numbering: "1.")
 
 #show image: set align(center)
 
 //FIGURES
 #show figure.caption: emph
+//#show figure.caption: set text(font: "arial", size: 9pt, weight: "extrabold")
 //#show figure.where(kind: table): set figure.caption(position: top)
 
 //FUNC
-#let note(body) = {
-  set text(red)
-  set text(font: "Arial", size: 10pt)
-  [#body]
-}
+// #let note(body) = {
+//   set text(red)
+//   set text(font: "Arial", size: 10pt)
+//   [#body]
+// }
+
+#let note(body) = {}
 
 //END OF SETUP
 
 
 
 
-= Introduction
-#note([Notes in this font and color])
+= INTRODUCTION
 
 == Background
 
@@ -77,12 +98,9 @@ This exploration will dive into how how rapid digital control of lighting impact
 
 
 
-
-=  Methodology
+=  METHODOLOGY
 
 == Materials
-
-=== Overview
 #note([This section could be converted to a table])
 - Camera
 - 12-50mm Lens
@@ -200,11 +218,11 @@ Tap water was left out in plastic container for a week prior to experiment in or
 
 #figure(
   table(
-    columns: 6,
+    columns: 5,
     inset: 2em,
-    [Fully On], [0.01 Hz], [1 Hz], [100 Hz], [10 KHz], [1 MHz],
-    [Fully On], [0.01 Hz], [1 Hz], [100 Hz], [10 KHz], [1 MHz],
-    [Fully On], [0.01 Hz], [1 Hz], [100 Hz], [10 KHz], [1 MHz],
+    [0.01 Hz], [1 Hz], [100 Hz], [10 KHz], [1 MHz],
+    [0.01 Hz], [1 Hz], [100 Hz], [10 KHz], [1 MHz],
+    [0.01 Hz], [1 Hz], [100 Hz], [10 KHz], [1 MHz],
   ),
   caption: [Arrangment of plants]
 )<grid>
@@ -245,3 +263,11 @@ Tap water was left out in plastic container for a week prior to experiment in or
 #lorem(300)
 
 */
+
+
+#pagebreak()
+
+#show: appendix
+
+= Tables and Data <appA>
+= Additional Listings <appB>
