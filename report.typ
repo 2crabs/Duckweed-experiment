@@ -203,8 +203,8 @@ Tap water was left out in plastic container for a week prior to experiment in or
 == Procedure
 #note([Is it better to add figures in between steps or consolidate them all in one place?])
 
-1. Measure 1500ml of prepared tap water into large container and using a pipette #note([amount still needs to be determined]) add 3 drops of plant supplement into water. Stir the mixture using a metal spoon #note([Does note neccesarily have to be a metal spoon]).
-+ Using another pipette add #note([need to determine the optimal volume of fluid here]) 20ml of the mixture prepared in step 1 to a small plastic cup.
+1. Measure 1000ml of prepared tap water into large container and using a straw #note([amount still needs to be determined]) add 3 drops of plant supplement into water. Stir the mixture using a metal spoon #note([Does note neccesarily have to be a metal spoon]).
++ Using another pipette add #note([need to determine the optimal volume of fluid here]) 30ml of the mixture prepared in step 1 to a small plastic cup.
 + Repeat step 2 until 18 cups contain water.
 + At random select 18 Spirodela Polyrhiza plants and add them to containers, adding lids with holes #note([reference figure with size and positionting of holes here]).
 + Place containers in a 3 by 6 grid with a spacing of 15 cm between the centers of adjacent containers.
