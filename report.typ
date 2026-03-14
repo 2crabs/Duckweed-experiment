@@ -280,6 +280,15 @@ Tap water was obtained from the faucet and was left out in plastic container for
   caption: [Arrangment of plants]
 )<grid>
 
+#figure(
+  grid(
+    columns: 2, gutter: 20mm,
+    image("imgs/Pixel1.jpg", width: 250pt),
+    image("imgs/Pixel2.jpg", width: 250pt),
+  ),
+  caption: [Grid of cups and lights in fireproof enclosure]
+) <figPol>
+
 == Safety and Environmental Considerations
 The power supply and LED setup were placed in a fireproof enclosure to prevent the ignition of its surroundings due to unexpected heating. This was important, as $"CO"_2$ captured in the wood of my house could have been released into the atmosphere and contributed to global warming.
 
@@ -304,7 +313,7 @@ For simplicity the conditions used for frequency will be referred to based on @r
   caption: [Frequency and matching reference]
 )<refer>
 
-The experimental procedure resulted in 120 raw image files which were than processed in Darktable to create the images found in @appB. A threshold of ____ was used for isolating red. For isolating green a threshold of ____ was used. All pixels within these thresholds were turned into black pixels while all others were turned into white pixels. The resulting images with green and red extracted can be found in @appB.
+The experimental procedure resulted in 120 raw image files which were than processed in Darktable to create the images found in @appB. A threshold of 0-61 was used for isolating red. For isolating green a threshold of 86-172 was used. All pixels within these thresholds were turned into black pixels while all others were turned into white pixels. The resulting images with green and red extracted can be found in @appB.
 
 Because the tripod likely had small changes in height the lens was a different distance from the paper. This resulted in the red square appearing a different size, and thus a different number of red pixels. Based on the variability in read pixels we are able to determine that the areas acquired from the photos have an error +- 3%.
 
