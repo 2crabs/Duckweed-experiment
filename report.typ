@@ -1,24 +1,42 @@
 //IMPORTS
 #import "@preview/lilaq:0.5.0" as lq
 #import "@preview/wordometer:0.1.5": word-count, total-words
+#import "@preview/codelst:2.0.2": sourcecode, sourcefile
 
 //TODO
-// Write data processing (Darktable, Python w/math, normalizing results if neccesary)
-// Write Results (Initials graphs and tables)
-// Draw conclusion
-// Determine citations
-// Appendix (Code, Tables of data)
+// Introduction discuss processes and chemical reaction used in photosynthesis
+// what is photosynthesis -> Light's role in photosynthesis -> chemical formulas -> Prediction
+// Write connection to previous study with lettuce plant
+// Write personal connection (seeing the worlds of technology and biology collide in a wolrd where that is bbecomeing increasingly more important)
+// Explain why specific LED was chosen
+// Detail reason for controlling control variables referencing previous study
+// Obtain thresholds used for data processing
+// Obtain error from histogram for using a camera
+// Detail out qualitivative results
+// Discuss reason for using heatmap
+// Interpret Heatmap
+// Reason for using line graph
+// Interpret line graph
+// Reason for boxplot
+// interpret box plot
+// State reason for using ANOVA
+// state hypothesis
+// Interpret significance value
+// talk about uncertainty in contributing to result of ANOVA
+// Conclusion (where data could be used in future)
+// Discussion of number of trials (more trials reduces variability)
+// Discussion of precision of instruments used
+// Lighting in testing for significance might have effected results
 // 
-// Scripts Used (Counting Pixels, )
-
 //TITLE PAGE
 #show title: set align(center + horizon)
 #show title: set pad(y: 16pt)
 
 #title()[Effects of Pulsed Lighting on Growth Rate of Spirodela Polyrhiza]
 #v(1.5em)
-//#align(center)[M. Fraser]
-#show: word-count
+#align(center)[#total-words]
+
+#show: word-count.with(exclude: ("heading", "table", "caption", "figure", outline, sourcefile))
 #pagebreak()
 //END TITLE PAGE
 
@@ -77,36 +95,53 @@
 #show heading.where(level: 1): upper
 
 = Introduction
+
+== Research Question
+This exploration will attempt to answer *how does the frequency of pulsed light effect the growth rate of Spirodela Polyrhiza?*
+
 == Background
 
-#note([Likely to change order of ideas but currently Applications->about specific plant-> more detailed about process -> implications. Background is the most incomplete at this point.])
-
-Spirodela Polyrhiza, commonly known as giant duckweed, has gained many uses due to its fast-growing ability and adaptability to a wide range of environments. These features have been especially important in making it the perfect candidate for cleaning urban waste water (citation). Additionally its chemical properties have made it potentially useful for creating biofuel (Citation). Being a floating plant has allowed Spirodela Polyrhiza #note([shorten to S. Polyrhiza?]) to be easily handled by automated growing systems, making it ideal for mechanized processes such as those that might be used for food production.
+Spirodela Polyrhiza, commonly known as giant duckweed, has gained many uses due to its fast-growing ability and adaptability to a wide range of environments. These features have been especially important in making it the perfect candidate for cleaning waste water (citation). Additionally its chemical properties have made it potentially useful for creating biofuel (Citation). Being a floating plant allows S. Polyrhiza to be easily handled by automated growing systems, making it ideal for mechanized processes such as those that might be used for food production.
 
 #figure(
   image("imgs/single-plant.jpg", width: 180pt),
   caption: [Spirodela Polyrhiza plant]
 ) <figFrond>
 
-The plant, measuring under a centimeter in diameter, consists of a frond and root seen in @figFrond. This enables it to efficiently perform photosynthesis on the surface of the water while using the nutrients found below. In certain conditions the plant is able to double biomass in just a few days by using asexual reproduction(citation).
+The plant, measuring under a centimeter in diameter, consists of a frond and root which can be seen in @figFrond. This enables it to perform photosynthesis on the surface of the water while obtaining nutrients found below. Using asexual reproduction, S. Polyrhiza is able to quickly reproduce and spread across the surface of calm bodies of water. In ideal conditions the plant has been found to be able to double in size is just a few days.
 
-Photosynthesis is a process in which plants are to create food from chemical processes involving carbon dioxide, light energy, and water, a crucial part of their growing process. (more about the chemical reactions involved in this process).
+Photosynthesis in combination with usage of nutrients in the water gives  S. Polyrhiza its fast-growing properties. In photosynthesis plants are to create food from carbon dioxide, light energy, and water, allowing for plant growth. An unbalanced equation for this is shown below:
 
-Predict that higher frequencies will be more effective at growing a plant. This relates to the residual concentration of the products of the chloroplast.
+$ "CO"_2 + "H"_2"O" + "Light energy"arrow "C"_6"H"_12"O"_6 + "O"_2 $
 
-Previous studies have analyzed the effect of pulsed lighting on lettuce and found that higher frequencies did result in a statistically significant result. (What frequencies were tested)
+This process occurs in the chloroplast, a plant cell organelle, and is split into two parts. The first of these is light dependent, meaning that it will only occur when light is present. This process uses water and light energy to produce ATP and NADPH. The equation is shown below:
 
-PWM modulation is a common technique in controlling lighting brightness, but is often limited to frequencies of up to a few kilohertz. The potential efficiency gained from higher frequencies could allow for power consumption of artifical lighting to be minimized.
+$ "H"_2"O" + "Light energy" arrow "O"_2 + "ATP" + "NADPH" $
 
-End with a specific personal connection
-
-
-#note(["research question" probably does not need its own heading])
-== Research Question
-This exploration will attempt to answer *how does the Frequency of pulsed light effect the growth rate of Spirodela Polyrhiza?*
+The second is light independent, meaing that it can still happen when the plant is not exposed to light. In this reaction the ATP and NADPH from the previous reaction is used with Carbon Dioxide to produce Glucose. The equation is shown below:
 
 
+$ "C""O"_2 +  "ATP" + "NADPH" arrow "C"_6"H"_12"O"_6 $
 
+Compared to first reaction, this requires more time before and after having the necessary products to slow down or speed up. This is due to photosynthetuc induction and the rate at which the plant can take in Carbon dioxide from the air. When these two reactions are combined they create the simplified model of photosynthesis shown in the first reaction. A diagram depicting this is shown in @figReactions.
+
+#figure(
+  image("imgs/reactions.png", width: 180pt),
+  caption: [Spirodela Polyrhiza plant]
+) <figReactions>
+
+Normally photosynthesis occurs in constant lighting from the sun, but increasingly, plants are  being grown in artificial lighting. Often artificial lighting employs Pulse Width Modulation to control the brightness. This means that lights are quickly turned on and off to make it appear dimmer. This can play a role in plant growth and as duckweed becomes an option for waste water treatment it is necessary to understand the optimal growing conditions, including how it is lit.
+
+Due to the concentration of the reactants in the light dependent reaction being high and products being low in concentration I predict that the when a chloroplast is first exposed to light the light dependent stage of photosyntheis will be more efficient. Additionally after the light is turned off there will be residual products from the reaction to fuel the Calvin Cycle. This is shown in @figPrediction. I hypothesize that as lighting frequency is increased the growth rate of S. Polyrhiza will also increase due to there being more time spent in the region of higher efficiency.
+
+#figure(
+  image("imgs/prediction.jpg", width: 400pt),
+  caption: [Spirodela Polyrhiza plant]
+) <figPrediction>
+
+Previous studies have analyzed the effect of pulsed lighting on lettuce and found that higher frequencies did result in increased growth when compared to lower frequencies of light. This effect was found to be most pronounced in frequencies above 1kHz.
+
+This topic is important to me as it connects the increasingly important world of technology with the world of biology. For example, automated systems are able to effectively grow plants in hydroponic systems. This experiment connects my interest in electronics with my disdain for biology.
 
 
 =  Methodology
@@ -136,8 +171,10 @@ An Olympus OM-D E-M5 Mark II mirrorless camera was used with a 12-50mm lens. The
 - 50mm
 - F8
 
+The accuracy of using a camera will later be identified during data processing.
+
 === LED
-The LED chosen had a warmth of 4000k and Color Rendering Index (CRI) of 90. The spectrum of light emitted is shown in @spectrum.
+The LED chosen had a warmth of 4000k and Color Rendering Index (CRI) of 90. The spectrum of light emitted is shown in @spectrum. (Why this warmth of LED, Relate to absorption spectrum)
 #v(1em)
 
 #let (wavelength, percent) = lq.load-txt(read("data/LED-Spectrum.csv"))
@@ -201,34 +238,36 @@ Seachem Flourish Plant Supplement was used and contains the nutrients required f
 === Spirodela Polyrhiza
 The plants was acquired at a local aquarium store as part of a larger collection of floating plants that included, duckweed, dwarf water lettuce, and red root floaters. Spirodela Polyrhiza was separated and stored at 68#sym.degree C in a shallow pool of tap water prior to experiment.
 
+#figure(
+  image("imgs/all-plants.jpg", width: 230pt),
+  caption: [Spirodela Polyrhiza plants used in experiment]
+) <figPool>
+
+
 === Tap water
-Tap water was left out in plastic container for a week prior to experiment in order to remove chlorination.
+Tap water was obtained from the faucet and was left out in plastic container for a week prior to experiment in order to remove chlorination.
 
 == Controlled Variables
-#note([This could be moved to above procedure])
-Explain Why conditions were chosen or why some desired conditions could not be found
-- Temperature:
-- Water:
-- Plant species: Study shows that different water species react differently to temperatures
-- Lighting: Same Spectrum
+- *Temperature*: The optimal temperature for S. Polyrhiza is 25C, but a temperature of 20C was used to due to limitations in the experimental setup.
+- *Water*: The water and nutrients in the water were kept the same. Based on previous studies of Duckweed plants the content of Nitrogen and Phosphorous in water can play a large role in growth rate.
+- *Plant species*: Study shows that different water species of duckweed have different growth rates so only S. Polyrhiza was used.
+- *Lighting*: Due to the importance of the absorption spectrum in plant growth, all plants were exposed to the same wavelengths and intensity of light.
 
 
 == Procedure
-#note([Is it better to add figures in between steps or consolidate them all in one place?])
 
 1. Measure 1000mL of prepared tap water into large container. Using the plastic straw, measure out 0.02ml of the plant supplement. This concentration was found based on the recommended amount of 5ml per 250L. Stir the mixture using the straw.
 
 + Add 30mL of the mixture prepared in step 1 to a small plastic cup.
 + Repeat step 2 until 15 cups contain water.
 + At random select 30 Spirodela Polyrhiza plants and add two to each of the plastic cups.
-+ Place containers in a 3 by 5 grid with a spacing of 10 cm between the centers of adjacent containers.
++ Place containers in a 3 by 5 grid with a spacing of 10 cm between the centers of adjacent containers. Comprehensive diagrams of this setup can be found in @appA.
 + Place LED lighting grid above the containers so that lights are centered above plastic cups
 + Set five PWM outputs with a 25% duty cycle and a frequency as determined by @grid.
 + After 24 hours remove LED grid and individually place plastic cups on piece of paper.
-+ Take photo from directly above paper with the end of lens 70cm above paper. Beside the cup place a piece of paper identifying the trial number. See @appB for diagrams.
++ Take photo from directly above paper with the end of lens 70cm above paper. Beside the cup place a piece of paper identifying the trial number. See @appA for diagrams.
 + Repeat above steps 8 and 9 until three days have passed.
-+ Repeat steps 1 to 10.
-#note([Should analysis of photos that yields numerical data be in procedure or results section?])
++ Repeat steps 1 to 10 to have six trials for each frequency condition in order to account for variability in results.
 
 #figure(
   table(
@@ -246,73 +285,260 @@ The power supply and LED setup were placed in a fireproof enclosure to prevent t
 
 Additionally, because plants were not taken out of their natural environment, there was not potential for damage to the surrounding ecosystem that Spirodela Polyrhiza would be found in.
 
+No humans or animals were experimented on during this experiment.
+
 == Data Processing
-For simplicity the conditions used for frequency will be referred to based on @refer. These are also the meanings of the numbers used in the photos. Additionally Each trial will be referred to with a letter. For each condition there were 6 trials, so thee letters used are A, B, C, D, E, and F.
+For simplicity the conditions used for frequency will be referred to based on @refer. These are also the meanings of the numbers used in the photos. Additionally Each trial will be referred to with a letter. For each condition there were 6 trials, so the letters used are A, B, C, D, E, and F.
 
 #figure(
   table(
-    columns: 2,
+    columns: 3,
     inset: 1em,
-    [Frequency], [Condition #sym.hash],
-    [0.01 Hz], [1],
-    [1 Hz], [2],
-    [100 Hz], [3],
-    [10 kHz], [4],
-    [1 MHz], [5]
+    [Variable], [Frequency], [Referenced As],
+    [$f_1$], [0.01 Hz], [1],
+    [$f_2$], [1 Hz], [2],
+    [$f_3$], [100 Hz], [3],
+    [$f_4$],  [10 kHz], [4],
+    [$f_5$], [1 MHz], [5]
   ),
-  caption: [Frequency and matching number]
+  caption: [Frequency and matching reference]
 )<refer>
 
-The experimental procedure resulted in 120 raw image files which were than processed in Darktable to create the images found in @appB. A threshold of ____ was used for isolating red. For isolating green a threshold of ____ was used. All pixels within these thresholds were turned into black pixels while all others were turned into white pixels. The resulting photos with green and red extracted can be found in @appB.
+The experimental procedure resulted in 120 raw image files which were than processed in Darktable to create the images found in @appB. A threshold of ____ was used for isolating red. For isolating green a threshold of ____ was used. All pixels within these thresholds were turned into black pixels while all others were turned into white pixels. The resulting images with green and red extracted can be found in @appB.
+
+Because the tripod likely had small changes in height the lens was a different distance from the paper. This resulted in the red square appearing a different size, and thus a different number of red pixels. Based on the variability in read pixels we are able to determine that the areas acquired from the photos have an error +- 3%.
+
+#let redHistData= lq.load-txt(read("data/red-hist.csv"))
+#let redAreas = lq.load-txt(read("data/red-areas.csv")).flatten()
+
+
+#let rotatedNumbers = ("27000", "27200", "27400", "27600", "27800", "28000", "28200", "28400", "28600").map(rotate.with(-90deg, reflow: true))
+
+
 #figure(
-  image("imgs/placeholder.jpg", width: 230pt),
-  caption: [Histogram of number of red pixels in photos]
-) <figRedHist>
+  grid(columns: 2, gutter: 40pt,
+    lq.diagram(
+      xaxis: (
+        ticks: (
+          (27000, rotatedNumbers.at(0)),
+          (27200, rotatedNumbers.at(1)),
+          (27400, rotatedNumbers.at(2)),
+          (27600, rotatedNumbers.at(3)),
+          (27800, rotatedNumbers.at(4)),
+          (28000, rotatedNumbers.at(5)),
+          (28200, rotatedNumbers.at(6)),
+          (28400, rotatedNumbers.at(7)),
+          (28600, rotatedNumbers.at(8))
+          ),
+        subticks: none
+      ),
+      lq.bar(
+        redHistData.at(0).map(x=> x+100),
+        redHistData.at(1),
+        width: 204.0
+      ),
+      lq.line(
+        stroke: (paint: lq.color.map.petroff10.at(1)),
+        (27704, 0%), (27704, 100%)
+      ),
+      lq.line(
+        stroke: (paint: lq.color.map.petroff10.at(1), dash: "dashed"),
+        (27144, 0%), (27144, 100%)
+      ),
+      lq.line(
+        stroke: (paint: lq.color.map.petroff10.at(1), dash: "dashed"),
+        (28409, 0%), (28409, 100%)
+      ),
+      xlabel: [Pixels],
+      ylabel: [Occurrences],
+      title: [Red pixels measured]
+    ),
+    align(center + horizon)[
+      #table(
+        columns: 2,
+        [*Min*], [#calc.min(..redAreas)],
+        [*Mean*], [#{calc.round(redAreas.sum()/redAreas.len())}],
+        [*Max*], [#calc.max(..redAreas)],
+      )
+    ]
+  ),
+  caption: [Histogram and summary of number of pixels in $900 "mm"^2$ red square],
+  kind: image
+)
 
-Using this we can estimate that x pixels is equivalent mm squared.
+Using the mean, we are able to estimate that 27704 pixels is equivalent area of the red square. Because we know the size of the red square is 30mm x 30mm, thus an area of 900mm^2. Using this information, we are able to convert the area in number of pixels into dimensional units using the following formula:
 
-Because we know the size of the red square is blank, we are able to convert the area in number of pixels into dimensional units using the following formula:
-$ "Area" = ("pixels")/1 dot (x "mm"^2)/( x "pixels") $
+$ "Area" = ("pixels")/1 dot (900 "mm"^2)/(27704 "pixels") $
 
-This resulted in 
+Using this equation, all measurements of pixels were transformed to measurements in mm^2. The results of these calculations can be found in @appB.
+
 = Results
+== Qualitative
+After three days had passed under the PWM lighting plants under different frequencies appeared very similar. All had a bright slightly yellow green color. Additionally the area covered by the fronds did not appear to be dramatically larger. Small roots were found at the bottom of the plastic cup having seperated from the frond.
 
-== Initial Graphs
-A total of 120 photos were taken.
-Heat map graph for total difference
+== Initial Data Visualization
+Heat map graph for total difference in the area overed by the plant. Again the frequency increases going to the right.
 
-#let plantDifference = lq.load-txt(read("data/difference.csv"))
+A color mesh style graph was created to show the total change from t=0 to t=72hr. Due to changes in starting area an additional visuallization was created to show the percentage change over the course of the three days. These data visualizations can be found in @figMesh.
+
+#let plantDifference = lq.load-txt(read("data/difference-area.csv"))
+#let plantDifferencePercent = lq.load-txt(read("data/percentage-difference.csv"))
+
+#let meshRaw = lq.colormesh(
+        lq.linspace(1, 5, num: 5),
+        lq.linspace(1, 6, num: 6),
+        (x, y) => int(plantDifference.at(int(x - 1)).at(int(y - 1))),
+        map: color.map.magma
+      )
+
+#let meshPercent =  lq.colormesh(
+          lq.linspace(1, 5, num: 5),
+          lq.linspace(1, 6, num: 6),
+          (x, y) => plantDifferencePercent.at(int(x - 1)).at(int(y - 1)),
+          map: color.map.magma
+        )
+
+#figure(
+  grid([
+      #lq.diagram(
+        width: 5cm, height: 6cm,
+        meshRaw,
+        yaxis: (
+          ticks: range(1, 7).zip(([A], [B], [C], [D], [E], [F]))
+        ),
+        title: [Area Change],
+        xlabel: [Frequency condition],
+        ylabel: [Trial]
+      )
+      #h(1mm)
+      #lq.colorbar(
+        meshRaw,
+        thickness: 2mm,
+        yaxis: (
+          position: right,
+          format-ticks: lq.tick-format.linear.with(suffix: $"mm"^2$)
+        )
+      )
+    ],
+    [
+      #lq.diagram(
+        width: 5cm, height: 6cm,
+        meshPercent,
+        yaxis: (
+          ticks: range(1, 7).zip(([A], [B], [C], [D], [E], [F]))
+        ),
+        title: [Percentage Change],
+        xlabel: [Frequency condition],
+        ylabel: [Trial]
+      )
+      #h(1mm)
+      #lq.colorbar(
+        meshPercent,
+        thickness: 2mm,
+        yaxis: (
+          position: right,
+          format-ticks: lq.tick-format.linear.with(suffix: $%$)
+        )
+      )
+    ],
+    columns: 2,
+    gutter: 20pt
+  ),
+  caption: [Visualization of the change in area (left) and percentage change (right) over the three days of plant growth]
+)<figMesh>
+
+There does not appear to be any strong relationship and larger variablilty in amount grown. Despite this the condition for frequency that appears to have grown the least does appear to be the lowest frequency at 0.01Hz.
+
+The color mesh shown in @figMesh only uses the first and last data but we are able to plot the data acquired from the times in between also. The change in area relative the the starting area for each frequency resulted in graph shown in @figLine.
+
+#let times = (0,1,2,3)
+#let lineData = lq.load-txt(read("data/line-graph-data-offset.csv"))
+
 #figure(
   lq.diagram(
-    width: 5cm, height: 6cm,
-    lq.colormesh(
-      lq.linspace(1, 5, num: 5),
-      lq.linspace(1, 6, num: 6),
-      (x, y) => int(plantDifference.at(int(x - 1)).at(int(y - 1))),
-      map: color.map.magma
+    lq.plot(
+      times,
+      lineData.at(0),
+      label: [0.01Hz]
     ),
-    yaxis: (
-      ticks: range(1, 7).zip(([A], [B], [C], [D], [E], [F]))
-    )
+    lq.plot(
+      times,
+      lineData.at(1),
+      label: [1Hz]
+    ),
+    lq.plot(
+      times,
+      lineData.at(2),
+      label: [100Hz]
+    ),
+    lq.plot(
+      times,
+      lineData.at(3),
+      label: [10kHz]
+    ),
+    lq.plot(
+      times,
+      lineData.at(4),
+      label: [1MHz]
+    ),
+    legend: (position: top + left),
+    xlabel: [time (days)],
+    ylabel: [Area ($"mm"^2$)]
   ),
-  caption: [1Hz signal used to control LED]
-)<appWa>
+  caption: [Average plant coverage by Spirodela Polyrhiza relative to starting point]
+)<figLine>
 
-Initial graphs (Average for each condition line chart (5 colors and 4 datpoints for each))
+This graph show a more clear pattern of growth in all frequencies except 0.01Hz. Notably from day 2 to  all frequencies appear to have about the same amount of growth.
 
-Box 
+#let areaDifference = lq.load-txt(read("data/difference-area.csv"))
+
+#figure(
+  lq.diagram(
+    lq.boxplot(
+      areaDifference.at(0),
+      areaDifference.at(1),
+      areaDifference.at(2),
+      areaDifference.at(3),
+      areaDifference.at(4)
+    ),
+    xlabel: [frequency],
+    ylabel: [Area Change ($"mm"^2$)]
+  ),
+  caption: [Comparison of change in area for each frequency]
+)<figBar>
+
+To better visuallize the variably across trials a bbar plot was constructed for each frequency. This is shown in @figBar. All bars overlap, indicating a weak relationship between frequency and growth rate.
 
 == Significance
-ANOVA test (significant difference in means)
+We are comparing five groups, each with six trials. we want to determine if there is a statistically significant difference between these groups so we will an ANOVA test. The null and alternative hypothesis are stated below.
 
-Mention uncertainty
+$ H_0: "All means are the same" $
+$ H_a: "At least one of the means is different" $
+
+We will use a significane level of p=0.05.
+
+A Python script was used to perform the ANOVA test. This resulted in a p-value of p=0.171. Because this is higher than our significance level of 0.05 we are not able to reject out null hypthesis. We do not have significant evidence that one of the means is different.
+
+The uncertainty of +-3% would not change this result as it would only increase the uncertainty.
 
 
 = Conclusion
-What do the results show? Is this data useful in the future. 
+Using an ANOVA test and a significance value we . This the results of this expeirment did not yield eveidence that frequency of lighting changes the growth rate of S Polyrhiza. Despite this the frequency that resulted in the lowest average growth across trials was 0.01Hz, potentially indicating potential for future studies.
+
+The wide range of frequencies used did allow for the possiblity to see the change between any two conditions.
 
 = Evaluation
-What were the weaknesses. What could be improved.
+This experiment did face certain limitations which likely contributed to variabilty in the data acquired. One of the most important was the temperature at which the plants were grown at. The thermometer that was placed in the same enclosure as the plants was checked each time the plants were removed and often displayed 18C. Based on the study of optimal conditions for S Polyrhiza, this likely to a far lower growth rate, demonstrated in two trials even having negative growth.
+
+Additionally the time to collect data was limited resulting in the three day time period that was used. The intensive data collection that neccesitated a photo of each plant limited the sustainability of using the same procedure for longer time periods.
+
+The reliablity of using photos and extracting the green areas was less than expected. Often ambient reflections would cause white specks on plant in the photos resulting in the pixel not being recognized as green. A consistent lighting set up was used, but small changes in the position of the paper and tipod relative to the light did limit the reproducability of the lighting.
+
+Lots of effort did go into the construction of the lighting grid which did work functuion correctly through the entire course of experiment. Despite this, the orginal intentions was to supply each LED controller PCB with 5V instead of 12V, but I was forced. This resulted to only being to use a 50 ohm resistor with 100mA of current. Ideally, a lower brightness of the LED would have been used.
+
+In future studies a longer time period could be used with automated data collection using a camera. This would allow for consistent lighting and results that were more independent of the resolution limitations in a photo. Additionally all the plants could be placed in the same tank of water to ensure that they all have eaccess to the same concentration of nutrients required for growth. Similarly the environment could have been better controlled to maintain optimal temperature and humidity for plant growth. A possible implmentation for this could a heating mat underneath the plants.
+
+
 
 
 
@@ -506,13 +732,47 @@ How oscilloscope was used to acquire waveforms. The waveforms of the LED Anode a
   caption: [Rise and fall of voltage on LED anode]
 )<appWaveAnode>
 
-== Code
-
-== Software
-
-
+#show heading.where(level: 3): set heading(numbering: none)
 
 #pagebreak()
+== Code
+
+=== anova.py
+#sourcefile(read("python-scripts/anova.py"), lang: "py")
+This script was used to find the p-value using an ANOVA test.
+#pagebreak() 
+
+=== histogram.py
+#sourcefile(read("python-scripts/histogram.py"), lang: "py")
+This script was used to generate the histogram data for red areas.
+#pagebreak()
+
+=== difference.py
+#sourcefile(read("python-scripts/difference.py"), lang: "py")
+This script was used
+#pagebreak()
+
+=== image-analysis-green.py
+#sourcefile(read("python-scripts/image-analysis-green.py"), lang: "py")
+This script was used
+#pagebreak()
+
+=== image-analysis-red.py
+#sourcefile(read("python-scripts/image-analysis-red.py"), lang: "py")
+This script was used
+#pagebreak()
+
+=== line-graph-offset.py
+#sourcefile(read("python-scripts/line-graph-offset.py"), lang: "py")
+This script was used
+#pagebreak()
+
+=== pixel-to-area.py
+#sourcefile(read("python-scripts/pixel-to-area.py"), lang: "py")
+This script was used
+#pagebreak()
+
+
 = Duckweed Photos and Pixel Count <appB>
 
 
@@ -562,10 +822,85 @@ How oscilloscope was used to acquire waveforms. The waveforms of the LED Anode a
   tablesToColumn(arrayToTable(g3), arrayToTable(r3), [100Hz])
   tablesToColumn(arrayToTable(g4), arrayToTable(r4), [10kHz])
   tablesToColumn(arrayToTable(g5), arrayToTable(r5), [1MHz])
+
+
+
   pagebreak()
+
+
+
+  let area1 = csv("data/10mHz-g-area.csv")
+  let area2 = csv("data/1Hz-g-area.csv")
+  let area3 = csv("data/100Hz-g-area.csv")
+  let area4 = csv("data/10kHz-g-area.csv")
+  let area5 = csv("data/1MHz-g-area.csv")
+
+  let tablesToColumnAreas(table1, table2, freq1, freq2) = {
+    columns(2)[
+      #figure(
+        table1,
+        caption: [Area for #freq1]
+      )<grd>
+      #colbreak()
+      #figure(
+        table2,
+        caption: [Area for #freq2]
+      )<grd>
+    ]
+  }
+
+  let arrayToTable(array) = {
+    return table(
+      columns: 7,
+      [t], [A], [B], [C], [D], [E], [F],
+      [0], ..(array.at(0).map(x => [#x $"mm"^2$])),
+      [1], ..(array.at(1).map(x => [#x $"mm"^2$])),
+      [2], ..(array.at(2).map(x => [#x $"mm"^2$])),
+      [3], ..(array.at(3).map(x => [#x $"mm"^2$]))
+    )
+  }
+
+  figure(
+    arrayToTable(area1),
+    caption: [Areas for 0.01Hz]
+  )
+
+  figure(
+    arrayToTable(area2),
+    caption: [Areas for 1Hz]
+  )
+
+  figure(
+    arrayToTable(area3),
+    caption: [Areas for 100Hz]
+  )
+
+  figure(
+    arrayToTable(area4),
+    caption: [Areas for 10kHz]
+  )
+
+  figure(
+    arrayToTable(area5),
+    caption: [Areas for 1Mhz]
+  )
+
+  let averageDifference = csv("data/line-graph-data-offset.csv")
+  figure(
+    table(
+      columns: 6,
+      [t], [0.01Hz], [1Hz], [100Hz], [10kHz], [1MHz],
+      [0], ..averageDifference.at(0).map(x => [#x $"mm"^2$]),
+      [1], ..averageDifference.at(1).map(x => [#x $"mm"^2$]),
+      [2], ..averageDifference.at(2).map(x => [#x $"mm"^2$]),
+      [3], ..averageDifference.at(3).map(x => [#x $"mm"^2$])
+    ),
+    caption: [Average change in area relative to starting area]
+  )
+    
 }
 
-//PHOTOS
+// //PHOTOS
 // #{
 //   let photos() = {
 //     let times = ("0", "1", "2", "3")
@@ -600,3 +935,7 @@ How oscilloscope was used to acquire waveforms. The waveforms of the LED Anode a
 //     )
 //   ]
 // }
+// 
+
+
+#bibliography("works.bib")

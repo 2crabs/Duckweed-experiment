@@ -21,7 +21,6 @@ binWidth = 200
 numBins = 8
 
 binArray = []
-testNums = [1001, 1050, 1650, 1432]
 
 for i in range(numBins):
     binArray.append([startBin + (i * binWidth), 0])
@@ -34,7 +33,8 @@ for num in readData:
     numBin = int((aboveFirstBin - (aboveFirstBin%binWidth))/binWidth)
     binArray[numBin][1] += 1
 
-print(binArray)
+for bin in binArray:
+    writer.writerow(bin)
 
 
 fileRead.close()

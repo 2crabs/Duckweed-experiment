@@ -3,11 +3,11 @@ import csv
 
 #applied to each number in csv file
 def areaFromPixels(x):
-    return x/10
+    return round(x * (900/27704), 1)
 
 
-fileRead = open("../data/1Hz-g.csv", newline = "")
-fileWritten = open("../data/1Hz-g-area.csv", mode="w", newline = "")
+fileRead = open("../data/difference.csv", newline = "")
+fileWritten = open("../data/difference-area.csv", mode="w", newline = "")
 
 reader = csv.reader(fileRead)
 writer = csv.writer(fileWritten)
